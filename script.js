@@ -4,8 +4,8 @@
 const svg = (inner, bg, defs = "") =>
   `<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">${defs ? `<defs>${defs}</defs>` : ""}<rect width="100" height="100" fill="${bg}"/>${inner}</svg>`;
 
-const svgW = (inner, bg, w = 200, h = 100) =>
-  `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="${h}" fill="${bg}"/>${inner}</svg>`;
+const svgW = (inner, bg, w = 200, h = 100, al = "xMidYMax") =>
+  `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="${al} slice" xmlns="http://www.w3.org/2000/svg"><rect width="${w}" height="${h}" fill="${bg}"/>${inner}</svg>`;
 
 function cloudS() {
   const pts = [];
@@ -132,7 +132,7 @@ function avatar(i) {
 const closeup = () => svgW(`<path d="M52 100c4-18 22-24 48-24s44 6 48 24z" fill="#9a6a4a"/><rect x="90" y="70" width="20" height="14" fill="#a8744f"/><ellipse cx="100" cy="68" rx="19" ry="23" fill="#b3805a"/><path d="M72 76c-9-34 8-52 28-52s37 18 28 52l-3 14c-4-4-5-12-5-26-10-8-34-8-40 0 0 14-1 22-5 26z" fill="#1d120d"/><path d="M89 68q5-3 10 0M107 68q5-3 10 0" stroke="#2a1a14" stroke-width="1.6" fill="none"/><path d="M93 82q7 4 14 0" stroke="#7a3a30" stroke-width="2" fill="none"/>`, "#2f6b4b");
 const backView = () => svg(`<defs><linearGradient id="dr" x1="0" x2="1"><stop offset="0" stop-color="#4a5a3a"/><stop offset=".5" stop-color="#6c7c52"/><stop offset="1" stop-color="#3a4a2e"/></linearGradient></defs><path d="M36 100l6-48c2-8 14-8 16 0l6 48z" fill="url(#dr)"/><path d="M40 50l20 0-2 14H42z" fill="#a8704f"/><path d="M38 14c6-10 18-10 22 0l6 56c-4 6-8 6-12 6 0-8-2-22-4-34-2 14-4 26-4 34-4 0-8 0-10-6z" fill="#241510"/><ellipse cx="50" cy="22" rx="8" ry="10" fill="#a8704f"/><path d="M42 50l-6 10M58 50l6 10" stroke="#a8704f" stroke-width="3"/>`, "#2f6b4b");
 
-const studioArt = () => svgW(`<path d="M96 100c6-24 22-32 44-32s38 8 44 32z" fill="#f0b6a4"/><path d="M122 70c12 6 24 6 36 0l4 12-22 8-22-8z" fill="#e6a08e"/><path d="M128 66l12 14 12-14z" fill="#d79a78"/><g fill="#34190f"><circle cx="124" cy="34" r="9"/><circle cx="133" cy="25" r="10"/><circle cx="147" cy="25" r="10"/><circle cx="156" cy="34" r="9"/><circle cx="121" cy="46" r="8"/><circle cx="158" cy="46" r="8"/><circle cx="140" cy="22" r="9"/></g><ellipse cx="140" cy="46" rx="16" ry="21" fill="#d79a78"/><g fill="#e6a53a" stroke="#6a3b10" stroke-width="1" opacity=".95"><circle cx="133" cy="44" r="5.5"/><circle cx="147" cy="44" r="5.5"/></g><path d="M138 44h4" stroke="#6a3b10" stroke-width="1"/><path d="M134 58q6 4 12 0" stroke="#b02828" stroke-width="2.4" fill="none"/>`, "#2f56b4");
+const studioArt = () => svgW(`<path d="M96 100c6-24 22-32 44-32s38 8 44 32z" fill="#f0b6a4"/><path d="M122 70c12 6 24 6 36 0l4 12-22 8-22-8z" fill="#e6a08e"/><path d="M128 66l12 14 12-14z" fill="#d79a78"/><g fill="#34190f"><circle cx="124" cy="34" r="9"/><circle cx="133" cy="25" r="10"/><circle cx="147" cy="25" r="10"/><circle cx="156" cy="34" r="9"/><circle cx="121" cy="46" r="8"/><circle cx="158" cy="46" r="8"/><circle cx="140" cy="22" r="9"/></g><ellipse cx="140" cy="46" rx="16" ry="21" fill="#d79a78"/><g fill="#e6a53a" stroke="#6a3b10" stroke-width="1" opacity=".95"><circle cx="133" cy="44" r="5.5"/><circle cx="147" cy="44" r="5.5"/></g><path d="M138 44h4" stroke="#6a3b10" stroke-width="1"/><path d="M134 58q6 4 12 0" stroke="#b02828" stroke-width="2.4" fill="none"/>`, "#2f56b4", 200, 100, "xMaxYMax");
 
 /* =====================================================================
    Helpers
@@ -144,6 +144,7 @@ const lerp = (a, b, t) => a + (b - a) * t;
 const ease = (t) => 1 - Math.pow(1 - t, 3);
 const easeIO = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 const vh = () => window.innerHeight;
+const isM = () => window.innerWidth < 760;
 const vw = () => window.innerWidth;
 const inView = (el) => { const r = el.getBoundingClientRect(); return r.top < vh() && r.bottom > 0; };
 const secProgress = (el) => { const r = el.getBoundingClientRect(); return clamp(-r.top / (r.height - vh())); };
@@ -197,10 +198,11 @@ const FANX = [-32, -21.3, -10.7, 0, 10.7, 21.3, 32], FANY = [1.5, -.5, 0, 0, 0, 
 setTimeout(() => { const c = heroCards[6]; c.style.transitionDelay = "0ms"; c.style.setProperty("--o", 1); c.style.setProperty("--y", "0vh"); c.style.setProperty("--r", "8deg"); }, 500);
 // 2) fan out
 setTimeout(() => {
+  const k = isM() ? 1.075 : 1;
   heroCards.forEach((c, i) => {
     c.style.transitionDelay = `${(6 - i) * 55}ms`;
     c.style.setProperty("--o", 1);
-    c.style.setProperty("--x", `${FANX[i]}vw`);
+    c.style.setProperty("--x", `${FANX[i] * k}vw`);
     c.style.setProperty("--y", `${FANY[i]}vh`);
     c.style.setProperty("--r", `${FANR[i]}deg`);
   });
@@ -222,6 +224,8 @@ cascCards[1].insertAdjacentHTML("beforeend", `<span class="tag" style="backgroun
    STUDIO + logos
    ===================================================================== */
 $(".studio-art").innerHTML = studioArt();
+const fitStudio = () => $(".studio-art svg").setAttribute("viewBox", isM() ? "106 0 68 100" : "0 0 200 100");
+fitStudio(); window.addEventListener("resize", fitStudio);
 const frame = $("#studioFrame");
 const LOGOS = [
   `<b style="font-weight:600;letter-spacing:-.02em">Northwall</b>`, `<i style="font-family:Georgia,serif">✦ Linden &amp; Co</i>`, `<span style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em">ATLAS PAINT</span>`,
@@ -242,6 +246,11 @@ const SC = [ // order in DOM: perfume, coat, grass, S, duo, yellow
   { art: "shadow", fan: [22.5, -15.5, 8, 13], stair: [7.3, 5.6, 2, 11.5], zf: 5, zs: 5 },
 ];
 const P1 = { S: [0, -19.5, 0, 15], duo: [1.6, -19, 6.5, 15], other: [0, -19.5, 0, 9] };
+const MP = { // mobile poses (vw, vh, deg, vw)
+  p1: { S: [0, -18, 0, 38], duo: [3, -17.5, 7, 38], other: [0, -18, 0, 22] },
+  fan: { perfume: [-35, -18, -8, 25], coat: [-21, -16, -4, 25], grass: [-8, -15, -1, 25], cloud: [6, -18, -2, 31], duo: [22, -15, 4, 26], shadow: [36, -14, 8, 26] },
+  stair: { perfume: [-27, -26, -5, 26], coat: [-16, -14, -3, 26], grass: [-4, -4, 0, 26], shadow: [7, 6, 2, 26], duo: [17, 15, 3, 26], cloud: [27, 25, 2, 26] },
+};
 const sCards = SC.map((d, i) => { const c = makeCard(d.art, i, "live tall"); c.style.opacity = 0; stageCards.append(c); return c; });
 // word-by-word text
 const stEl = $("#statementText");
@@ -336,10 +345,11 @@ function frameUpdate() {
   if (inView(mk)) {
     const p = ease(clamp((viewProgress(mk) - 0.3) / 0.28));
     cascCards.forEach((c, i) => {
-      const fx = 49 + i * 8.4, fy = 30 + i * 8.6, fw = 10.5 + i * 1.3;
-      c.style.left = `${lerp(62, fx, p)}vw`;
-      c.style.top = `${lerp(40, fy, p)}vh`;
-      c.style.setProperty("--w", `${lerp(10, fw, p)}vw`);
+      const m = isM();
+      const fx = m ? 24 + i * 10.5 : 49 + i * 8.4, fy = m ? 56 + i * 7 : 30 + i * 8.6, fw = m ? 24 + i * 2.2 : 10.5 + i * 1.3;
+      c.style.left = `${lerp(m ? 50 : 62, fx, p)}vw`;
+      c.style.top = `${lerp(m ? 66 : 40, fy, p)}vh`;
+      c.style.setProperty("--w", `${lerp(m ? 22 : 10, fw, p)}vw`);
       c.style.setProperty("--r", `${lerp(0, CASC_R[i], p)}deg`);
       c.style.opacity = i === 0 ? clamp(p * 4 + 0.15) : clamp(p * 3 - i * 0.12);
     });
@@ -356,10 +366,11 @@ function frameUpdate() {
     const spread = ease(clamp((t - 0.1) / 0.22));
     const stair = easeIO(clamp((t - 0.58) / 0.22));
     sCards.forEach((c, i) => {
-      const d = SC[i];
-      const hide = d.hero ? P1.S : d.art === "duo" ? P1.duo : P1.other;
-      const a = hide.map((v, k) => lerp(v, d.fan[k], spread));
-      const b = a.map((v, k) => lerp(v, d.stair[k], stair));
+      const d = SC[i], m = isM();
+      const hide = m ? (d.hero ? MP.p1.S : d.art === "duo" ? MP.p1.duo : MP.p1.other) : (d.hero ? P1.S : d.art === "duo" ? P1.duo : P1.other);
+      const fan = m ? MP.fan[d.art] : d.fan, stairP = m ? MP.stair[d.art] : d.stair;
+      const a = hide.map((v, k) => lerp(v, fan[k], spread));
+      const b = a.map((v, k) => lerp(v, stairP[k], stair));
       c.style.setProperty("--x", `${b[0]}vw`);
       c.style.setProperty("--y", `${b[1] + (1 - appear) * 6}vh`);
       c.style.setProperty("--r", `${b[2]}deg`);
@@ -394,9 +405,10 @@ function frameUpdate() {
     const t = secProgress(fin);
     const rise = ease(clamp(t / 0.16));
     const s = easeIO(clamp((t - 0.3) / 0.24));
-    const endW = W * 0.18, endH = W * 0.255;
-    heroCard.style.setProperty("--cw", `${lerp(W * 0.86, endW, s)}px`);
-    heroCard.style.setProperty("--ch", `${lerp(H * 0.64, endH, s)}px`);
+    const m = isM();
+    const endW = W * (m ? 0.24 : 0.18), endH = endW * 1.42;
+    heroCard.style.setProperty("--cw", `${lerp(W * (m ? 0.92 : 0.86), endW, s)}px`);
+    heroCard.style.setProperty("--ch", `${lerp(H * (m ? 0.5 : 0.64), endH, s)}px`);
     heroCard.style.setProperty("--cr", `${lerp(16, 9, s)}px`);
     heroCard.style.setProperty("--cy", `${(1 - rise) * H * 0.6 + s * H * 0.0}px`);
     heroCard.style.setProperty("--cl", String(1 - clamp(s * 2.4)));
@@ -407,7 +419,8 @@ function frameUpdate() {
     toolbar.style.transform = `translate(-50%, ${(1 - rise) * H * 0.7}px)`;
     toolbar.style.opacity = 1 - clamp((s - 0.1) * 2);
     const z1 = easeIO(clamp((t - 0.64) / 0.14)), z2 = easeIO(clamp((t - 0.84) / 0.14));
-    zoomEl.style.transform = `scale(${1 + 1.35 * z1 - 1.35 * z2})`;
+    const zk = m ? 0.9 : 1.35;
+    zoomEl.style.transform = `scale(${1 + zk * z1 - zk * z2})`;
   }
 }
 let ticking = false;
