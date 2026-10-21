@@ -9,7 +9,7 @@ const ease = (t) => 1 - Math.pow(1 - t, 3);
 const easeIO = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const W = () => window.innerWidth;
 const H = () => window.innerHeight;
-const isM = () => window.innerWidth < 760;
+const isM = () => window.innerWidth < 900;
 const vwpx = (v) => (W() * v) / 100;
 const secProgress = (el) => { const r = el.getBoundingClientRect(); return clamp(-r.top / Math.max(1, r.height - H())); };
 const viewProgress = (el) => { const r = el.getBoundingClientRect(); return clamp((H() - r.top) / (H() + r.height)); };
@@ -218,7 +218,7 @@ function frameUpdate() {
   // archive: two rows drift in opposite directions, grid zooms, then a glitching preview appears
   if (inView(archStage)) {
     const t = secProgress(archStage), m = isM();
-    const tile = vwpx(m ? 62 : 26.4) + vwpx(m ? 2 : 0.9);
+    const tile = (m ? Math.min(vwpx(62), 400) + 8 : vwpx(26.4) + vwpx(0.9));
     row1.style.transform = `translateX(${lerp(0, -tile * 1.8, t)}px)`;
     row2.style.transform = `translateX(${lerp(-tile * 0.5, tile * 0.5, t)}px)`;
     const z = 1 + (m ? 0.1 : 0.26) * ease(clamp(t / 0.55));

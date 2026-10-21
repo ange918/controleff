@@ -26,6 +26,7 @@ const glow = (id, cx, cy, r, c, o = 0.9) => `<radialGradient id="${id}" cx="${cx
 /* generic person (portrait box 100x125) */
 function person({ bg, skin = "#d9a88a", hair = "#1b1410", style = "short", shirt = "#222", glasses = null, beard = false, cx = 50, cy = 46, s = 1, light = null, collar = null, blur = 1.1 }) {
   const id = "p" + _uid++;
+  s *= 1.28; cy += 6;
   const rx = 17 * s, ry = 21 * s;
   const hairBack = {
     short: `<ellipse cx="${cx}" cy="${cy - 6 * s}" rx="${21 * s}" ry="${23 * s}" fill="${hair}"/>`,
@@ -35,8 +36,8 @@ function person({ bg, skin = "#d9a88a", hair = "#1b1410", style = "short", shirt
     none: "",
   }[style];
   const defs = `<radialGradient id="${id}f" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".38"/></radialGradient><linearGradient id="${id}n" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>` + (light ? `<linearGradient id="${id}l" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${light[0]}" stop-opacity=".6"/><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="${light[1]}" stop-opacity=".65"/></linearGradient>` : "");
-  const neckW = 17 * s;
-  const body = `<path d="M${cx - 52 * s} 130c2-${24 * s} ${20 * s}-${34 * s} ${52 * s}-${36 * s}s${50 * s} ${12 * s} ${52 * s} ${36 * s}z" fill="${shirt}"/><path d="M${cx - 52 * s} 130c2-${24 * s} ${20 * s}-${34 * s} ${52 * s}-${36 * s}s${50 * s} ${12 * s} ${52 * s} ${36 * s}z" fill="#000" opacity=".18"/>${collar ? `<path d="M${cx - 22 * s} ${cy + 36 * s}l${22 * s} ${26 * s} ${22 * s}-${26 * s}z" fill="${collar}"/>` : ""}<path d="M${cx - neckW / 2} ${cy + 14 * s}h${neckW}l${4 * s} ${26 * s}h-${neckW + 8 * s}z" fill="${skin}"/><path d="M${cx - neckW / 2} ${cy + 14 * s}h${neckW}l${4 * s} ${26 * s}h-${neckW + 8 * s}z" fill="url(#${id}n)"/>`;
+  const neckW = 20 * s;
+  const body = `<path d="M${cx - 52 * s} 130c2-${24 * s} ${20 * s}-${34 * s} ${52 * s}-${36 * s}s${50 * s} ${12 * s} ${52 * s} ${36 * s}z" fill="${shirt}"/><path d="M${cx - 52 * s} 130c2-${24 * s} ${20 * s}-${34 * s} ${52 * s}-${36 * s}s${50 * s} ${12 * s} ${52 * s} ${36 * s}z" fill="#000" opacity=".18"/>${collar ? `<path d="M${cx - 22 * s} ${cy + 36 * s}l${22 * s} ${26 * s} ${22 * s}-${26 * s}z" fill="${collar}"/>` : ""}<path d="M${cx - neckW / 2} ${cy + 12 * s}h${neckW}l${5 * s} ${18 * s}h-${neckW + 10 * s}z" fill="${skin}"/><path d="M${cx - neckW / 2} ${cy + 12 * s}h${neckW}l${5 * s} ${18 * s}h-${neckW + 10 * s}z" fill="url(#${id}n)"/>`;
   const face = `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${skin}"/><ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="url(#${id}f)"/>`;
   const front = style === "short" || style === "white" ? `<path d="M${cx - 18 * s} ${cy - 6 * s}c0-22 ${36 * s}-22 ${36 * s} 0c-${6 * s}-8-${30 * s}-8-${36 * s} 0z" fill="${hair}"/>` : style === "curly" ? `<path d="M${cx - 17 * s} ${cy - 10 * s}c4-12 ${30 * s}-12 ${34 * s} 0c-${8 * s}-5-${26 * s}-5-${34 * s} 0z" fill="${hair}"/>` : "";
   const eyes = `<g fill="#1a110c" opacity=".55"><ellipse cx="${cx - 7 * s}" cy="${cy + 1 * s}" rx="${2.2 * s}" ry="${1 * s}"/><ellipse cx="${cx + 7 * s}" cy="${cy + 1 * s}" rx="${2.2 * s}" ry="${1 * s}"/></g><path d="M${cx - 1 * s} ${cy + 3 * s}q${1.4 * s} ${5 * s} ${-1 * s} ${6 * s}" stroke="#000" stroke-opacity=".18" stroke-width="${1 * s}" fill="none"/><ellipse cx="${cx}" cy="${cy + 13 * s}" rx="${4.4 * s}" ry="${1.2 * s}" fill="#6a2c28" opacity=".6"/>`;
