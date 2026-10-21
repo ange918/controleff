@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gesso — Where your work finds its wall</title>
+  <meta name="description" content="Une marketplace où les artistes exposent et vendent, et où les collectionneurs trouvent la pièce qu'ils vont aimer.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <a class="logo" href="#top"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2l3 7 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z" fill="#3340e8"/></svg>Gesso</a>
+  <nav class="nav-links">
+    <a href="#marketplace">Marketplace</a>
+    <a href="#vision"><i class="dot"></i>Collect</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#community">Artists</a>
+    <a href="#studio">Studio</a>
+    <a href="#market">Shop</a>
+    <a href="#" aria-label="Profil"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/></svg></a>
+    <a href="#" aria-label="Réglages"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg></a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <h1 class="blur-words" data-split>Where your work<br>finds its wall.</h1>
+  <div class="fan" id="heroFan"></div>
+  <p class="hero-sub reveal">Artists hang their work here. Collectors find<br>the piece they'll love with.</p>
+  <div class="hero-cta reveal">
+    <a class="btn btn-dark" href="#pricing">Join for $8/mo</a>
+    <a class="btn btn-link" href="#marketplace">See how it works</a>
+  </div>
+</section>
+
+<!-- MARKETPLACE -->
+<section class="split" id="marketplace">
+  <div class="split-text">
+    <span class="eyebrow">Marketplace</span>
+    <h2 class="blur-words" data-split>Exhibit, sell,<br><em class="blue">&amp; collect original</em><br>work in one place.</h2>
+    <p class="muted reveal">An open market where artists and collectors meet over the work itself. List a piece in minutes, or follow the artists you love.</p>
+    <div class="row reveal">
+      <a class="btn btn-dark" href="#pricing">Join for $8/mo</a>
+      <a class="btn btn-link" href="#studio">Read more</a>
+    </div>
+  </div>
+  <div class="cascade" id="cascade"></div>
+</section>
+
+<!-- STUDIO -->
+<section class="studio" id="studio">
+  <div class="studio-head">
+    <div>
+      <span class="eyebrow">Studio sessions · Neon asters</span>
+      <h2 class="blur-words" data-split>Step inside<br>the studio.</h2>
+    </div>
+    <span class="chip chip-dark floaty">@noor</span>
+  </div>
+  <div class="studio-frame" id="studioFrame">
+    <div class="studio-art"></div>
+    <span class="studio-tag"><i></i>Place</span>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement" id="statement">
+  <div class="stage" id="stage">
+    <div class="stage-fan" id="stageFan"></div>
+    <span class="chip chip-dark pin pin-l">@ola</span>
+    <span class="chip chip-blue pin pin-r">@rui</span>
+    <p class="statement-text" id="statementText">
+      Whether you make work to sell / or hunt for <span class="g">one-of-a-kind</span> pieces, Gesso
+      <span class="ico ico-dark"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2.4"><circle cx="12" cy="12" r="8"/></svg></span>
+      brings you into a world of craft
+      <span class="ico ico-red"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2.4"><path d="M4 20l4-1 11-11-3-3L5 16z"/></svg></span>
+      &amp; collecting.
+    </p>
+    <div class="statement-icons">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 6-7 12-7-12z"/></svg>
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M7 3h10v6l-3 2 3 2v8H7v-8l3-2-3-2z"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision" id="vision">
+  <div class="vision-text">
+    <span class="dot-mark"></span>
+    <h2 class="blur-words" data-split>Our vision:<br>tools for every<br>medium.</h2>
+    <p class="muted reveal">Every piece carries a story. Gesso gives each artist a studio page, fair fees and buyers who came for the work.</p>
+    <a class="btn btn-link small reveal" href="#market">Read more →</a>
+    <div class="tools" id="tools"></div>
+  </div>
+  <div class="panel reveal">
+    <div class="panel-bar">
+      <div class="tabs" id="tabs">
+        <button class="tab on" data-tab="0">Collected</button>
+        <button class="tab" data-tab="1">Studio</button>
+      </div>
+      <span class="panel-create">+ Create</span>
+    </div>
+    <div class="grid3" id="grid3"></div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community" id="community">
+  <div class="avatars a-top" data-dir="1"></div>
+  <div class="community-text">
+    <span class="star"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M12 2l3 7 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z" fill="#3340e8"/></svg></span>
+    <h2 class="blur-words" data-split>There's a seat<br>for you here.</h2>
+    <p class="muted reveal">A growing circle of artists and collectors who meet over<br>the work.</p>
+  </div>
+  <div class="avatars a-bot" data-dir="-1"></div>
+</section>
+
+<!-- STORIES -->
+<section class="stories" id="stories">
+  <div class="stories-head">
+    <span class="eyebrow">Stories behind the work</span>
+    <h2 class="blur-words" data-split>Every piece<br>carries a story.</h2>
+  </div>
+  <div class="stories-cols">
+    <div class="col" data-speed="-0.06" id="colA"></div>
+    <div class="col" data-speed="0.08" id="colB"></div>
+  </div>
+</section>
+
+<!-- MARKET CAROUSEL -->
+<section class="market" id="market">
+  <div class="market-text">
+    <span class="eyebrow blue-t">Come closer</span>
+    <h2 class="blur-words" data-split>A market<br>for makers.</h2>
+    <p class="muted reveal">New originals every week, priced by the artists who made them.</p>
+    <a class="btn btn-blue" href="#">View all</a>
+    <div class="ctrl">
+      <button class="round" id="prev" aria-label="Précédent">‹</button>
+      <button class="round" id="next" aria-label="Suivant">›</button>
+      <div class="bar"><i id="barFill"></i></div>
+    </div>
+  </div>
+  <div class="track" id="track"></div>
+</section>
+
+<!-- PORTRAIT → GRID -->
+<section class="finale" id="finale">
+  <div class="finale-sticky">
+    <div class="toolbar" id="toolbar">
+      <span class="tb"></span><span class="tb red"></span><span class="tb"></span><span class="tb blue"></span><span class="tb"></span><span class="tb red"></span><span class="tb"></span>
+    </div>
+    <div class="faces faces-l" id="facesL"></div>
+    <div class="faces faces-r" id="facesR"></div>
+    <div class="hero-card" id="heroCard">
+      <div class="hero-card-art"></div>
+      <span class="like">♥ Like</span>
+      <span class="chip chip-red artist">@artist</span>
+      <span class="by"><i></i><b>Inès Okafor</b><small>on Gesso</small></span>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <span class="eyebrow">Pricing</span>
+  <h2 class="blur-words" data-split>Simple, fair,<br>made for makers.</h2>
+  <div class="plans">
+    <article class="plan reveal"><h3>Collector</h3><p class="price">$0<small>/mo</small></p><p class="muted">Follow artists and save the pieces you love.</p><a class="btn btn-light" href="#">Start free</a></article>
+    <article class="plan featured reveal"><span class="chip chip-light">Popular</span><h3>Gesso</h3><p class="price">$8<small>/mo</small></p><p>Your own studio page and a fair 5% fee on every sale.</p><a class="btn btn-white" href="#">Join for $8/mo</a></article>
+    <article class="plan reveal"><h3>Studio</h3><p class="price">$14<small>/mo</small></p><p class="muted">Teams, prints on demand and advanced analytics.</p><a class="btn btn-light" href="#">Choose Studio</a></article>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <a class="logo" href="#top"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2l3 7 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z" fill="#3340e8"/></svg>Gesso</a>
+  <span>© 2026 Gesso. Tous droits réservés.</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
