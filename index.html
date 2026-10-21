@@ -1,128 +1,232 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FUTUR Certify - Authentification de Certificats</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'navy': '#0b1d3a',
-                        'cyan': '#00ffff',
-                        'orange': '#ff7f00'
-                    },
-                    fontFamily: {
-                        'montserrat': ['Montserrat', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sonance Studio</title>
+  <meta name="description" content="A creative studio shaping disruptive stories through editorial photography, cinematic visuals, and forward-thinking direction.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-navy min-h-screen font-montserrat">
-    <!-- Header -->
-    <header class="bg-navy border-b border-cyan/20 py-6">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-gradient-to-r from-cyan to-orange rounded-lg flex items-center justify-center">
-                        <i class="fas fa-certificate text-navy text-xl"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-2xl font-bold text-white">FUTUR Certify</h1>
-                        <p class="text-cyan text-sm">Authentification de Certificats</p>
-                    </div>
-                </div>
-                <a href="admin.html" class="bg-orange hover:bg-orange/80 text-white px-6 py-2 rounded-lg font-medium transition-colors">
-                    <i class="fas fa-user-shield mr-2"></i>Admin
-                </a>
-            </div>
-        </div>
-    </header>
+<body>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
-        <!-- Hero Section -->
-        <div class="text-center mb-12">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-                Vérifiez l'authenticité de votre certificat
-            </h2>
-            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Entrez le numéro matricule de l'étudiant pour authentifier son certificat du Programme FUTUR
-            </p>
-        </div>
+<header class="top" id="top">
+  <a href="#hero" class="brand">SONANCE STUDIO</a>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">MENU</button>
+</header>
 
-        <!-- Search Section -->
-        <div class="max-w-2xl mx-auto mb-12">
-            <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-cyan/20">
-                <div class="flex flex-col md:flex-row gap-4">
-                    <div class="flex-1">
-                        <input 
-                            type="text" 
-                            id="searchInput" 
-                            placeholder="Entrez le numéro matricule (ex: FUT2024001)"
-                            class="w-full px-6 py-4 bg-white/10 border border-cyan/30 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-cyan focus:ring-2 focus:ring-cyan/20 transition-all"
-                        >
-                    </div>
-                    <button 
-                        id="searchBtn"
-                        class="bg-gradient-to-r from-cyan to-orange hover:from-cyan/80 hover:to-orange/80 text-navy font-semibold px-8 py-4 rounded-xl transition-all transform hover:scale-105"
-                    >
-                        <i class="fas fa-search mr-2"></i>Rechercher
-                    </button>
-                </div>
-            </div>
-        </div>
+<nav class="menu" id="menu" aria-hidden="true">
+  <a href="#gallery" data-n="01">Gallery</a>
+  <a href="#services" data-n="02">Services</a>
+  <a href="#archive" data-n="03">Archive</a>
+  <a href="#projects" data-n="04">Projects</a>
+  <a href="#awards" data-n="05">Awards</a>
+  <a href="#method" data-n="06">Method</a>
+  <a href="#pricing" data-n="07">Pricing</a>
+  <a href="#team" data-n="08">Team</a>
+  <a href="#faq" data-n="09">FAQ</a>
+</nav>
 
-        <!-- Results Section -->
-        <div id="resultsSection" class="hidden">
-            <div id="studentCard" class="max-w-4xl mx-auto bg-white/5 backdrop-blur-sm rounded-2xl border border-cyan/20 overflow-hidden">
-                <!-- Student card content will be inserted here -->
-            </div>
-        </div>
+<main>
 
-        <!-- No Results Message -->
-        <div id="noResults" class="hidden text-center py-12">
-            <div class="max-w-md mx-auto">
-                <i class="fas fa-search text-6xl text-gray-600 mb-6"></i>
-                <h3 class="text-2xl font-semibold text-white mb-4">Aucun résultat trouvé</h3>
-                <p class="text-gray-300 mb-6">Le numéro matricule saisi ne correspond à aucun certificat dans notre base de données.</p>
-                <button onclick="clearSearch()" class="bg-orange hover:bg-orange/80 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                    Nouvelle recherche
-                </button>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-media"><div class="hero-img" data-art="hero"></div></div>
+  <ul class="hero-tags">
+    <li>Journey no. 01</li><li>Editorial edge</li><li>Visual noir</li><li>Freedom &amp; silence</li><li>Edition with intention</li>
+  </ul>
+  <h1 class="glitch hero-title" data-glitch data-now>SONANCE<br>STUDIO</h1>
+  <p class="hero-p rv" data-now>A creative studio shaping disruptive stories through editorial photography, cinematic visuals, and forward-thinking direction.</p>
+  <p class="hero-bl tiny">EST. 2025, LONDON, UK<br>INDEPENDENT / GLOBAL REACH</p>
+  <p class="hero-br tiny">EDITORIAL<br>CINEMATIC<br>DIRECTOR</p>
+</section>
 
-        <!-- Loading Animation -->
-        <div id="loading" class="hidden text-center py-12">
-            <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-cyan mb-4"></div>
-            <p class="text-cyan font-medium">Recherche en cours...</p>
-        </div>
-    </main>
+<!-- INTRO -->
+<section class="intro" id="intro">
+  <span class="label l1">(0/25)</span>
+  <p class="big rv">With editorial precision and cinematic flair, we shape bold visual stories that mesmerize the eye, move the heart, and linger in memory.</p>
+  <hr class="rule">
+  <span class="label l2">(Today)</span>
+  <p class="big rv">We bring stories to life with precision, creativity, and a bold visual edge, delivering captivating photography and cinematic videography that leave a lasting impression.</p>
+  <a href="#gallery" class="more rv">Learn More <i></i></a>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-navy border-t border-cyan/20 py-8 mt-20">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-gray-400">© 2025 Programme FUTUR. Tous droits réservés.</p>
-        </div>
-    </footer>
+<!-- GALLERY -->
+<section class="sec gallery" id="gallery">
+  <div class="head">
+    <span class="label">(Series)</span>
+    <h2 class="glitch" data-glitch>UNVEILED<br>THE LENS</h2>
+    <hr class="rule">
+    <p class="lead rv">Sonance Studio symbolizes nuanced minimalism and filmic sophistication. We champion disparity—brightness and obscurity</p>
+  </div>
+  <div class="strip" id="strip">
+    <div class="tile" data-art="g1"></div><div class="tile" data-art="g2"></div><div class="tile" data-art="g3"></div><div class="tile" data-art="g4"></div><div class="tile" data-art="g1"></div>
+  </div>
+</section>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+<!-- SERVICES -->
+<section class="sec services" id="services">
+  <div class="head">
+    <span class="label">(Services)</span>
+    <h2 class="glitch" data-glitch>STUDIO<br>SERVICES</h2>
+    <hr class="rule">
+    <p class="lead rv">We offer a curated range of visual services from concept development to final delivery designed to elevate brands through bold storytelling and aesthetic precision.</p>
+  </div>
+  <ul class="list">
+    <li class="rv"><span>EDITORIAL PHOTOGRAPHY</span><em>01</em></li>
+    <li class="rv"><span>CINEMATIC VIDEOGRAPHY</span><em>02</em></li>
+    <li class="rv"><span>CREATIVE DIRECTION</span><em>03</em></li>
+    <li class="rv"><span>POST PRODUCTION</span><em>04</em></li>
+    <li class="rv"><span>CINEMATIC MOTION</span><em>05</em></li>
+  </ul>
+</section>
+
+<!-- ARCHIVE -->
+<section class="archive" id="archive">
+  <div class="sec">
+    <div class="head">
+      <span class="label">(Archive)</span>
+      <h2 class="glitch" data-glitch>VISUAL<br>ARCHIVE</h2>
+      <hr class="rule">
+      <p class="lead rv">A curated collection of our most striking visuals, blending cinematic storytelling with artistic precision.</p>
+    </div>
+  </div>
+  <div class="arch-stage" id="archStage">
+    <div class="arch-sticky">
+      <div class="arch-grid" id="archGrid">
+        <div class="arch-row" id="row1"></div>
+        <div class="arch-row" id="row2"></div>
+      </div>
+      <div class="arch-dim" id="archDim"></div>
+      <div class="peek" id="peek"><div class="peek-in" data-art="popup"></div><i></i><i></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- WARP -->
+<section class="warp" id="warp">
+  <div class="warp-stage">
+    <canvas id="warpCanvas"></canvas>
+    <span class="corner tl tiny">PRECISION</span><span class="corner tr tiny">CREATIVITY</span>
+    <span class="corner bl tiny">VISION</span><span class="corner br tiny">STORYTELLING</span>
+    <div class="warp-mask"><div class="warp-text" id="warpText">We craft stories with precision, creativity, and bold vision</div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="sec projects" id="projects">
+  <div class="head">
+    <span class="label">(Work)</span>
+    <h2 class="glitch" data-glitch>SELECTED<br>VISUALS</h2>
+    <hr class="rule">
+    <p class="lead rv">Explore our selected projects, from fashion editorials to high-end cinematic productions, each crafted with a unique perspective</p>
+  </div>
+  <div class="panels" id="panels"></div>
+</section>
+
+<!-- AWARDS -->
+<section class="sec awards" id="awards">
+  <div class="head">
+    <span class="label">(Award)</span>
+    <h2 class="glitch" data-glitch>ACCLAIMED<br>AWWARD</h2>
+    <hr class="rule">
+    <p class="lead rv">Our work has earned prestigious awards and features in top publications, setting new creative benchmarks.</p>
+  </div>
+  <ul class="table">
+    <li class="rv"><span>Awwwards</span><span>Site of the Day</span><em>(2024)</em></li>
+    <li class="rv"><span>CSS Design Awards</span><span>Best Innovation</span><em>(2024)</em></li>
+    <li class="rv"><span>FWA</span><span>Cutting Edge Award</span><em>(2023)</em></li>
+    <li class="rv"><span>Vogue Italia</span><span>Best Editorial Photography</span><em>(2024)</em></li>
+    <li class="rv"><span>D&amp;AD</span><span>Excellence in Visual Storytelling</span><em>(2024)</em></li>
+    <li class="rv"><span>Red Dot Design Award</span><span>Creative Direction</span><em>(2024)</em></li>
+    <li class="rv"><span>LA Film Awards</span><span>Best Experimental Short</span><em>(2024)</em></li>
+  </ul>
+</section>
+
+<!-- METHOD -->
+<section class="method" id="method">
+  <div class="method-stage" id="methodStage">
+    <div class="sec">
+      <div class="head">
+        <span class="label">(Process)</span>
+        <h2 class="glitch" data-glitch>STUDIO<br>METHOD</h2>
+        <hr class="rule">
+        <p class="lead rv">More than just steps our process is a collaborative path that shapes concepts into cinematic, editorial, and emotionally impactful visuals.</p>
+      </div>
+      <div class="steps-wrap" id="stepsWrap">
+      <div class="steps">
+        <article class="step"><h3 class="glitch" data-glitch>INITIAL<br>STRATEGY</h3><p>We start with a conversation to understand your goals, challenges, and creative direction. This is where we explore the heart of the project and ensure we're aligned from the start. Whether it's a one-time campaign or a long-term vision, we begin by listening.</p><em>/01</em></article>
+        <article class="step"><h3 class="glitch" data-glitch>CREATIVE<br>PLANNING</h3><p>This phase is where strategy meets imagination. We create concepts, moodboards, storyboards, and timelines. Every creative element is planned out — from shot lists to production logistics — ensuring we're fully prepared for what comes next.</p><em>/02</em></article>
+        <article class="step"><h3 class="glitch" data-glitch>ACTION<br>TIME</h3><p>Lights on. Cameras ready. We execute the plan with precision and energy — capturing moments, motion, and emotion exactly as envisioned. Our team ensures everything runs smoothly, whether it's on set, on location, or behind the scenes.</p><em>/03</em></article>
+      </div>
+      <div class="pops" id="pops"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec pricing" id="pricing">
+  <div class="head">
+    <span class="label">(Pricing)</span>
+    <h2 class="glitch" data-glitch>ARTISTRY<br>PRICED</h2>
+    <hr class="rule">
+    <p class="lead rv">We offer flexible pricing designed around the scale, style, and ambition of your project. Just tailored creativity.</p>
+  </div>
+  <div class="plans">
+    <article class="plan rv">
+      <ul class="checks"><li>1-2 shoot days</li><li>Moodboard &amp; visual direction</li><li>Basic color grading &amp; post-production</li><li>CMS integration</li><li>Up to 3 creative concepts</li><li>10-25 final edited</li></ul>
+      <p class="note">For small teams or personal brands needing a sharp visual story.</p>
+      <div class="price"><b>$5,000</b><button class="plus" aria-label="Details">+</button></div>
+    </article>
+    <article class="plan wide rv">
+      <div class="two">
+        <ul class="checks"><li>2-4 shoot days with full team</li><li>Any location of your choice</li><li>Custom storyboard &amp; shot list</li></ul>
+        <ul class="checks"><li>Advanced lighting setups</li><li>Up to 3 deliverables (photo &amp; video mix)</li><li>Full casting</li></ul>
+      </div>
+      <p class="meta tiny">Studio / Outdoor / Custom Set</p>
+      <p class="note">Designed for brands and creatives seeking premium, cinematic storytelling with a refined launch touch</p>
+      <div class="price"><b>$9,999</b><a class="start" href="#faq">Start Now</a></div>
+    </article>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="sec team" id="team">
+  <div class="head">
+    <span class="label">(Team)</span>
+    <h2 class="glitch" data-glitch>VISUAL<br>THINKERS</h2>
+    <hr class="rule">
+    <p class="lead rv">A collective of artists, strategists, and storytellers — united by a vision to create striking, meaningful work</p>
+  </div>
+  <div class="people" id="people"></div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq" id="faq">
+  <div class="head">
+    <span class="label">(FAQ)</span>
+    <h2 class="glitch" data-glitch>NEED<br>ANSWER</h2>
+    <hr class="rule">
+    <p class="lead rv">Whether you're planning your first campaign or refining your brand's visual identity, here are answers to some common questions about how we work</p>
+  </div>
+  <div class="qa" id="qa"></div>
+</section>
+
+</main>
+
+<!-- CTA -->
+<footer class="cta" id="cta">
+  <canvas id="ctaCanvas"></canvas>
+  <h2 class="glitch cta-title" data-glitch>LET'S MAKE<br>ICONIC WORK</h2>
+  <a class="contact rv" href="mailto:hello@sonance.studio">Contact Us <i></i></a>
+  <p class="legal tiny rv"><a href="#">404</a><a href="#">PRIVACY</a><a href="#">TERMS</a></p>
+  <p class="copy tiny">© 2025 SONANCE STUDIO. ALL RIGHTS RESERVED.</p>
+</footer>
+
+<script src="art.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
