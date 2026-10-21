@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gesso — Where your work finds its wall</title>
-  <meta name="description" content="Une marketplace où les artistes exposent et vendent, et où les collectionneurs trouvent la pièce qu'ils vont aimer.">
+  <meta name="description" content="An open market where artists and collectors meet over the work itself.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -12,9 +12,8 @@
 </head>
 <body>
 
-<!-- NAV -->
 <header class="nav">
-  <a class="logo" href="#top"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2l3 7 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z" fill="#3340e8"/></svg>Gesso</a>
+  <a class="logo" href="#top"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M12 2l2.6 6.4L21 9l-5 4.4L17.5 20 12 16.6 6.5 20 8 13.4 3 9l6.4-.6z" fill="#3340e8"/></svg>Gesso</a>
   <nav class="nav-links">
     <a href="#marketplace">Marketplace</a>
     <a href="#vision"><i class="dot"></i>Collect</a>
@@ -22,8 +21,8 @@
     <a href="#community">Artists</a>
     <a href="#studio">Studio</a>
     <a href="#market">Shop</a>
-    <a href="#" aria-label="Profil"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/></svg></a>
-    <a href="#" aria-label="Réglages"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg></a>
+    <a href="#" class="ic" aria-label="Aa"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 20L12 4l7 16M8 14h8"/></svg></a>
+    <a href="#" class="ic" aria-label="Settings"><svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg></a>
   </nav>
 </header>
 
@@ -33,8 +32,8 @@
 <section class="hero" id="hero">
   <h1 class="blur-words" data-split>Where your work<br>finds its wall.</h1>
   <div class="fan" id="heroFan"></div>
-  <p class="hero-sub reveal">Artists hang their work here. Collectors find<br>the piece they'll love with.</p>
-  <div class="hero-cta reveal">
+  <p class="hero-sub" id="heroSub">Artists hang their work here. Collectors find<br>the piece they'll love with.</p>
+  <div class="hero-cta" id="heroCta">
     <a class="btn btn-dark" href="#pricing">Join for $8/mo</a>
     <a class="btn btn-link" href="#marketplace">See how it works</a>
   </div>
@@ -67,25 +66,28 @@
     <div class="studio-art"></div>
     <span class="studio-tag"><i></i>Place</span>
   </div>
+  <div class="curious">
+    <h3 class="reveal">Collected by the curious.</h3>
+    <p class="muted reveal">Studios, galleries and independents who sell and collect through Gesso.</p>
+    <div class="logos reveal"><div class="logos-track" id="logos"></div></div>
+  </div>
 </section>
 
 <!-- STATEMENT -->
 <section class="statement" id="statement">
   <div class="stage" id="stage">
-    <div class="stage-fan" id="stageFan"></div>
-    <span class="chip chip-dark pin pin-l">@ola</span>
-    <span class="chip chip-blue pin pin-r">@rui</span>
-    <p class="statement-text" id="statementText">
-      Whether you make work to sell / or hunt for <span class="g">one-of-a-kind</span> pieces, Gesso
-      <span class="ico ico-dark"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2.4"><circle cx="12" cy="12" r="8"/></svg></span>
-      brings you into a world of craft
-      <span class="ico ico-red"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2.4"><path d="M4 20l4-1 11-11-3-3L5 16z"/></svg></span>
-      &amp; collecting.
-    </p>
-    <div class="statement-icons">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l7 6-7 12-7-12z"/></svg>
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M7 3h10v6l-3 2 3 2v8H7v-8l3-2-3-2z"/></svg>
+    <div class="stage-cards" id="stageCards"></div>
+    <div class="tip" id="tip"><b>Where art meets buyer</b><span>Artists list originals, buyers follow the artists they love.</span></div>
+    <span class="chip chip-red tip-tag" id="tipTag">@collector</span>
+    <span class="chip chip-dark pin pin-l" id="pinL">@ola</span>
+    <span class="chip chip-blue pin pin-r" id="pinR">@rui</span>
+    <div class="statement-wrap" id="stWrap">
+      <p class="statement-text" id="statementText">Whether you make work to sell / or hunt<br>for <span class="g">one-of-a-kind</span> pieces, Gesso <span class="ico ico-dark"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="2.6"><circle cx="12" cy="12" r="7"/></svg></span> brings<br>you into a world of craft <span class="ico ico-red"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="2.6"><path d="M4 20l4-1 11-11-3-3L5 16z"/></svg></span> &amp; collecting.</p>
+      <div class="statement-icons">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l6 7-6 11-6-11z"/></svg>
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="3"/></svg>
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M7 3h10v6l-3 2 3 2v8H7v-8l3-2-3-2z"/></svg>
+      </div>
     </div>
   </div>
 </section>
@@ -115,7 +117,7 @@
 <section class="community" id="community">
   <div class="avatars a-top" data-dir="1"></div>
   <div class="community-text">
-    <span class="star"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M12 2l3 7 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z" fill="#3340e8"/></svg></span>
+    <span class="star"><svg viewBox="0 0 24 24" width="10" height="10"><path d="M12 2l2.6 6.4L21 9l-5 4.4L17.5 20 12 16.6 6.5 20 8 13.4 3 9l6.4-.6z" fill="#3340e8"/></svg></span>
     <h2 class="blur-words" data-split>There's a seat<br>for you here.</h2>
     <p class="muted reveal">A growing circle of artists and collectors who meet over<br>the work.</p>
   </div>
@@ -125,8 +127,8 @@
 <!-- STORIES -->
 <section class="stories" id="stories">
   <div class="stories-head">
-    <span class="eyebrow">Stories behind the work</span>
-    <h2 class="blur-words" data-split>Every piece<br>carries a story.</h2>
+    <span class="eyebrow">Stories from the work</span>
+    <h2 class="blur-words" data-split>Every canvas<br>carries a story.</h2>
   </div>
   <div class="stories-cols">
     <div class="col" data-speed="-0.06" id="colA"></div>
@@ -134,7 +136,7 @@
   </div>
 </section>
 
-<!-- MARKET CAROUSEL -->
+<!-- MARKET -->
 <section class="market" id="market">
   <div class="market-text">
     <span class="eyebrow blue-t">Come closer</span>
@@ -142,27 +144,36 @@
     <p class="muted reveal">New originals every week, priced by the artists who made them.</p>
     <a class="btn btn-blue" href="#">View all</a>
     <div class="ctrl">
-      <button class="round" id="prev" aria-label="Précédent">‹</button>
-      <button class="round" id="next" aria-label="Suivant">›</button>
+      <button class="round" id="prev" aria-label="Previous">‹</button>
+      <button class="round" id="next" aria-label="Next">›</button>
       <div class="bar"><i id="barFill"></i></div>
     </div>
   </div>
   <div class="track" id="track"></div>
 </section>
 
-<!-- PORTRAIT → GRID -->
+<!-- FINALE -->
 <section class="finale" id="finale">
   <div class="finale-sticky">
     <div class="toolbar" id="toolbar">
-      <span class="tb"></span><span class="tb red"></span><span class="tb"></span><span class="tb blue"></span><span class="tb"></span><span class="tb red"></span><span class="tb"></span>
+      <span class="tb"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#333" stroke-width="2"><path d="M4 20l4-1 11-11-3-3L5 16z"/></svg></span>
+      <span class="tb red"></span>
+      <span class="tb"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#333" stroke-width="2"><circle cx="12" cy="12" r="7"/></svg></span>
+      <span class="tb blue"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3l6 7-6 11-6-11z"/></svg></span>
+      <span class="tb"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#333" stroke-width="2"><rect x="4" y="6" width="16" height="12" rx="2"/></svg></span>
+      <span class="tb red"></span>
+      <span class="tb"><svg viewBox="0 0 24 24" width="11" height="11" fill="#333"><path d="M7 3h10v6l-3 2 3 2v8H7v-8l3-2-3-2z"/></svg></span>
     </div>
-    <div class="faces faces-l" id="facesL"></div>
-    <div class="faces faces-r" id="facesR"></div>
-    <div class="hero-card" id="heroCard">
-      <div class="hero-card-art"></div>
-      <span class="like">♥ Like</span>
-      <span class="chip chip-red artist">@artist</span>
-      <span class="by"><i></i><b>Inès Okafor</b><small>on Gesso</small></span>
+    <div class="zoom" id="zoom">
+      <div class="faces faces-l" id="facesL"></div>
+      <div class="faces faces-r" id="facesR"></div>
+      <div class="hero-card" id="heroCard">
+        <div class="hc-back"></div>
+        <div class="hc-close"></div>
+        <span class="like">♥ Like</span>
+        <span class="chip chip-red artist">@artist</span>
+        <span class="by"><i></i><span><b>Inès Okafor</b><small>on Gesso</small></span></span>
+      </div>
     </div>
   </div>
 </section>
@@ -181,8 +192,8 @@
 </main>
 
 <footer class="footer">
-  <a class="logo" href="#top"><svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2l3 7 7 1-5 5 1 7-6-4-6 4 1-7-5-5 7-1z" fill="#3340e8"/></svg>Gesso</a>
-  <span>© 2026 Gesso. Tous droits réservés.</span>
+  <a class="logo" href="#top"><svg viewBox="0 0 24 24" width="13" height="13"><path d="M12 2l2.6 6.4L21 9l-5 4.4L17.5 20 12 16.6 6.5 20 8 13.4 3 9l6.4-.6z" fill="#3340e8"/></svg>Gesso</a>
+  <span>© 2026 Gesso. All rights reserved.</span>
 </footer>
 
 <script src="script.js"></script>
